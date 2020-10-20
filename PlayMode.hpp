@@ -29,9 +29,9 @@ struct PlayMode : Mode {
 	virtual void update(float elapsed) override;
 	virtual void draw(glm::uvec2 const &drawable_size) override;
 	virtual void shoot();
-	virtual void PlayMode::move_bullets(float elapsed);
+	virtual void move_bullets(float elapsed);
 	virtual void generate_bot(float elapsed);
-	virtual void PlayMode::move_enemies();
+	virtual void move_enemies();
 	virtual void enemy_die();
 	virtual void cargo_taken();
 	virtual void robot_damage(float elapsed);

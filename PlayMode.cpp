@@ -115,7 +115,7 @@ PlayMode::~PlayMode() {
 
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
 
-	//if (win || lose) return false;
+	if (win || lose) return false;
 
 	if (evt.type == SDL_KEYDOWN) {
 		if (evt.key.keysym.sym == SDLK_ESCAPE) {
@@ -185,7 +185,7 @@ void PlayMode::update(float elapsed) {
 	//player walking:
 	//printf("bullet now %p %d %p\n", bullet, bullet->pipeline.count, bTrans);
 
-	//if (win || lose) return;
+	if (win || lose) return;
 	{
 		//combine inputs into a move:
 		constexpr float PlayerSpeed = 3.0f;
@@ -200,7 +200,7 @@ void PlayMode::update(float elapsed) {
 		}
 
 		move_bullets(elapsed);
-		//generate_bot(elapsed);
+		generate_bot(elapsed);
 		move_enemies();
 		enemy_die();
 		cargo_taken();
@@ -323,7 +323,7 @@ void PlayMode::move_bullets(float elapsed) {
 		bullets[i]->age += elapsed;
 		auto move = glm::vec3(3.0f, 3.0f, 3.0f);
 		glm::mat4x3 frame = bullets[i]->t->make_local_to_parent();
-		glm::vec3 right = frame[0];
+		//glm::vec3 right = frame[0];
 		glm::vec3 up = frame[1];
 		glm::vec3 forward = -frame[2];
 		bullets[i]->t->position += up * move.z - (forward/2.0f) * move.y;
