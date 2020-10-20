@@ -44,13 +44,14 @@ struct Scene {
 		glm::mat4x3 make_world_to_local() const;
 
 		//since hierarchy is tracked through pointers, copy-constructing a transform  is not advised:
-		Transform(Transform const &) = delete;
+		//Transform(Transform const &) = delete;
 		//if we delete some constructors, we need to let the compiler know that the default constructor is still okay:
 		Transform() = default;
 	};
 
 	struct Drawable {
 		//a 'Drawable' attaches attribute data to a transform:
+		Drawable() = default;
 		Drawable(Transform *transform_) : transform(transform_) { assert(transform); }
 		Transform * transform;
 

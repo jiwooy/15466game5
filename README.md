@@ -1,8 +1,11 @@
-# (TODO: your game's title)
+# Robot Defense
 
-Author: (TODO: your name)
+Author: Jiwoo Yoo
 
-Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
+Design: Your local robot factory suddenly malfunctioned. Now, all it produces 
+are greedy, kleptomaniac robots. You won't stand for this—robots aren't supposed 
+to take over the world yet! Shoot down the incoming robots, and defeat the sentient
+factory to save your cargo. 
 
 Screen Shot:
 
@@ -10,9 +13,17 @@ Screen Shot:
 
 How To Play:
 
-(TODO: describe the controls and (if needed) goals/strategy.)
+left click to shoot
+wasd to move
 
-Sources: (TODO: list a source URL for any assets you did not create yourself. Make sure you have a license for the asset.)
+Sources: 
+
+Enemy collision sound made by qubodup at https://freesound.org/s/332056/
+Big robot collision sound made by EdgardEdition at https://freesound.org/s/114177/
+Cargo taken sound made by AlienXXX at https://freesound.org/s/207314/
+Shooting sound made by MATRIXXX_ at https://freesound.org/s/459145/
+
+All meshes made by me
 
 This game was built with [NEST](NEST.md).
 

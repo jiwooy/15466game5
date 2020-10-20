@@ -1,31 +1,13 @@
-.PHONY : all
-
-#n.b. the '-y' sets autoexec scripts to 'on' so that driver expressions will work
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Darwin)
-	BLENDER = /Applications/Blender/blender.app/Contents/MacOS/blender -y
-else ifeq ($(UNAME_S),Linux)
-	BLENDER = ../../blender-2.90.0-linux64/blender -y
-else
-	BLENDER = blender
-endif
-
-EXPORT_MESHES=export-meshes.py
-EXPORT_WALKMESHES=export-walkmeshes.py
-EXPORT_SCENE=export-scene.py
-
-DIST=../dist
-
 all : \
-	$(DIST)/phone-bank.pnct \
-	$(DIST)/phone-bank.w \
-	$(DIST)/phone-bank.scene \
+    ../dist/place.pnct \
+    ../dist/place.scene \
+    ../dist/place.w \
 
-$(DIST)/phone-bank.pnct : phone-bank.blend $(EXPORT_MESHES)
-	$(BLENDER) --background --python $(EXPORT_MESHES) -- '$<':Platforms '$@'
+../dist/place.scene : place.blend export-scene.py
+    "C:\Program Files\Blender Foundation\Blender 2.90\blender.exe" --background --python export-scene.py -- "place.blend:Collection" "../dist/place.scene"
 
-$(DIST)/phone-bank.scene : phone-bank.blend $(EXPORT_SCENE)
-	$(BLENDER) --background --python $(EXPORT_SCENE) -- '$<':Platforms '$@'
+../dist/place.pnct : place.blend export-meshes.py
+    "C:\Program Files\Blender Foundation\Blender 2.90\blender.exe" --background --python export-meshes.py -- "place.blend:Collection" "../dist/place.pnct" 
 
-$(DIST)/phone-bank.w : phone-bank.blend $(EXPORT_WALKMESHES)
-	$(BLENDER) --background --python $(EXPORT_WALKMESHES) -- '$<':WalkMeshes '$@'
+../dist/place.w : place.blend export-walkmeshes.py
+    "C:\Program Files\Blender Foundation\Blender 2.90\blender.exe" --background --python export-walkmeshes.py -- "place.blend:Collection" "../dist/place.w" 
